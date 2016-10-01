@@ -1,0 +1,20 @@
+﻿@using Math.Solver.Core.Equations.SecondDegreeEquation
+@using Math.Solver.Core.Model.Equations.SecondDegreeEquation
+@{
+    ViewBag.Title = "Home Page";
+    var solver = new SecondDegreeEquationSolver();
+    var param = new SecondDegreeEquationParameters()
+    {
+        A = 2,
+        B = 20,
+        C = -22
+    };
+    var res = solver.Solve(param);
+}
+
+<div class="jumbotron">
+   @foreach (var proc in res.ProcessJaxFormatted)
+   {
+       <div>@proc</div>
+   }
+</div>
