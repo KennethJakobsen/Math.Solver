@@ -1,9 +1,9 @@
-﻿@using Math.Solver.Core.Equations.SecondDegreeEquation
-@using Math.Solver.Core.Model.Equations.SecondDegreeEquation
+﻿@using Math.Solver.Core.Equations.QuadraticEquation
+@using Math.Solver.Core.Model.Equations.QuadraticEquation
 @{
     ViewBag.Title = "Home Page";
-    var solver = new SecondDegreeEquationSolver();
-    var param = new SecondDegreeEquationParameters()
+    var solver = new QuadraticEquationSolver();
+    var param = new QuadraticEquationParameters()
     {
         A = 2,
         B = 20,

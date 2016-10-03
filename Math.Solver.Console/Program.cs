@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Math.Solver.Core.Equations.SecondDegreeEquation;
-using Math.Solver.Core.Model.Equations.SecondDegreeEquation;
+using Math.Solver.Core.Model.Equations.QuadraticEquation;
 
 namespace Math.Solver.Console
 {
@@ -13,7 +13,7 @@ namespace Math.Solver.Console
         static void Main(string[] args)
         {
             var solver = new SecondDegreeEquationSolver();
-            var param = new SecondDegreeEquationParameters()
+            var param = new QuadraticEquationParameters()
             {
                 A = 2,
                 B = 20,

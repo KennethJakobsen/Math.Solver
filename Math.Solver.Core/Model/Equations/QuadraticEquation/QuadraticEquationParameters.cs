@@ -1,6 +1,6 @@
-﻿namespace Math.Solver.Core.Model.Equations.SecondDegreeEquation
+﻿namespace Math.Solver.Core.Model.Equations.QuadraticEquation
 {
-    public class SecondDegreeEquationParameters
+    public class QuadraticEquationParameters
     {
         public decimal A { get; set; }
         public decimal B { get; set; }

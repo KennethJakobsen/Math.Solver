@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Linq.Expressions;
 
-namespace Math.Solver.Core.Model.Equations.SecondDegreeEquation
+namespace Math.Solver.Core.Model.Equations.QuadraticEquation
 {
-    public class SecondDegreeEquationResult
+    public class QuadraticEquationResult
     {
-        public SecondDegreeEquationResult()
+        public QuadraticEquationResult()
         {
             HasResult = true;
             Results = new List<decimal>();

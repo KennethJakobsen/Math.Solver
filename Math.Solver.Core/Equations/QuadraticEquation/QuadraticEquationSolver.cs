@@ -1,18 +1,18 @@
 ﻿using System;
 using Math.Solver.Core.Helpers.Formatting;
 using Math.Solver.Core.Helpers.Tex;
-using Math.Solver.Core.Model.Equations.SecondDegreeEquation;
+using Math.Solver.Core.Model.Equations.QuadraticEquation;
 using Math = System.Math;
 
-namespace Math.Solver.Core.Equations.SecondDegreeEquation
+namespace Math.Solver.Core.Equations.QuadraticEquation
 {
-    public class SecondDegreeEquationSolver
+    public class QuadraticEquationSolver
     {
 
 
-        public SecondDegreeEquationResult Solve(SecondDegreeEquationParameters parameters)
+        public QuadraticEquationResult Solve(QuadraticEquationParameters parameters)
         {
-            var result = new SecondDegreeEquationResult();
+            var result = new QuadraticEquationResult();
 
             var d = (parameters.B * parameters.B) - (4 * parameters.A * parameters.C);
             SetResult(parameters, result, d);
@@ -23,7 +23,7 @@ namespace Math.Solver.Core.Equations.SecondDegreeEquation
             return result;
         }
 
-        private static void SetProcessInTexFormat(SecondDegreeEquationParameters parameters, SecondDegreeEquationResult result, decimal d)
+        private static void SetProcessInTexFormat(QuadraticEquationParameters parameters, QuadraticEquationResult result, decimal d)
         {
             result.Process.Add(parameters.A + "x" + Tex.Squared + Format.ToPrefixedString(parameters.B) + "x " + Format.ToPrefixedString(parameters.C) + @" = 0");
             result.Process.Add($@"d = {parameters.B + Tex.Squared} - 4{Tex.CDot}{Format.ToPrefixedString(parameters.A, true, false)}{Tex.CDot}{Format.ToPrefixedString(parameters.C, true)} = {parameters.B * parameters.B} {Format.ToPrefixedString(-4 * parameters.A * parameters.C)} = {d}");
@@ -48,7 +48,7 @@ namespace Math.Solver.Core.Equations.SecondDegreeEquation
                 result.Process.Add("x = Ø");
             }
         }
-        private static void SetResult(SecondDegreeEquationParameters parameters, SecondDegreeEquationResult result, decimal d)
+        private static void SetResult(QuadraticEquationParameters parameters, QuadraticEquationResult result, decimal d)
         {
 
             if (d == 0)

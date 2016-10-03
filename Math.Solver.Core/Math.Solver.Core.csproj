@@ -40,14 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Equations\SecondDegreeEquation\SecondDegreeEquationSolver.cs" />
+    <Compile Include="Equations\QuadraticEquation\QuadraticEquationSolver.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Helpers\Formatting\FormatHelper.cs" />
     <Compile Include="Helpers\Formatting\IHelpFormatNumbers.cs" />
     <Compile Include="Helpers\Tex\TexHelper.cs" />
     <Compile Include="Infrastructure\IoC\Bootstrapper.cs" />
-    <Compile Include="Model\Equations\SecondDegreeEquation\SecondDegreeEquationParameters.cs" />
-    <Compile Include="Model\Equations\SecondDegreeEquation\SecondDegreeEquationResult.cs" />
+    <Compile Include="Model\Equations\QuadraticEquation\QuadraticEquationParameters.cs" />
+    <Compile Include="Model\Equations\QuadraticEquation\QuadraticEquationResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
