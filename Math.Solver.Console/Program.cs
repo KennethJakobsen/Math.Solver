@@ -25,7 +25,7 @@ namespace Math.Solver.Console
                 System.Console.WriteLine(proc);
             }
 
-            foreach (var proc in res.ProcessJaxFormatted)
+            foreach (var proc in res.Process)
             {
                 System.Console.WriteLine(proc);
             }

@@ -41,8 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Equations\SecondDegreeEquation\SecondDegreeEquationSolver.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Helpers\Formatting\FormatHelper.cs" />
     <Compile Include="Helpers\Formatting\IHelpFormatNumbers.cs" />
+    <Compile Include="Helpers\Tex\TexHelper.cs" />
     <Compile Include="Infrastructure\IoC\Bootstrapper.cs" />
     <Compile Include="Model\Equations\SecondDegreeEquation\SecondDegreeEquationParameters.cs" />
     <Compile Include="Model\Equations\SecondDegreeEquation\SecondDegreeEquationResult.cs" />

@@ -1,8 +1,8 @@
 ﻿namespace Math.Solver.Core.Helpers.Formatting
 {
-    public class FormatHelper
+    public static class Format
     {
-        public string ToPrefixedString(decimal input, bool parenthesis = false, bool prefixpositive = true)
+        public static string ToPrefixedString(decimal input, bool parenthesis = false, bool prefixpositive = true)
         {
             if(!parenthesis && prefixpositive)
                 return input > 0 ? $"+ {input}" : $"{input}";
