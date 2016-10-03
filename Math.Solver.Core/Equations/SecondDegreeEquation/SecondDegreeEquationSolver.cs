@@ -34,8 +34,8 @@ namespace Math.Solver.Core.Equations.SecondDegreeEquation
             }
             else if (d > 0)
             {
-               var first = Tex.Fraction( Format.ToPrefixedString(-1 * parameters.B)+ Tex.Pm + Tex.SquareRoot(d.ToString()) , "2" + Tex.CDot + Format.ToPrefixedString(parameters.A, true, false) );
-                var second = Tex.Fraction(Format.ToPrefixedString(-1 * parameters.B) + Tex.Pm + System.Math.Sqrt((double)d), Format.ToPrefixedString(parameters.A *2, true, false));
+               var first = Tex.Fraction($"{Format.ToPrefixedString(-1 * parameters.B) }  {Tex.Pm} {Tex.SquareRoot(d.ToString())}" , "2" + Tex.CDot + Format.ToPrefixedString(parameters.A, true, false) );
+                var second = Tex.Fraction($"{Format.ToPrefixedString(-1 * parameters.B)} {Tex.Pm} {System.Math.Sqrt((double)d)}", Format.ToPrefixedString(parameters.A *2, true, false));
                 var over1 = Tex.Fraction(Format.ToPrefixedString(-1*parameters.B) + " + " + System.Math.Sqrt((double) d), Format.ToPrefixedString(parameters.A * 2, true, false));
                 var under1 =Tex.Fraction(Format.ToPrefixedString(-1 * parameters.B) + " - " + System.Math.Sqrt((double)d), Format.ToPrefixedString(parameters.A * 2, true, false));
                 var over2 = Tex.Fraction((-1*(double) parameters.B + System.Math.Sqrt((double) d)).ToString(),Format.ToPrefixedString(parameters.A*2, true, false));
