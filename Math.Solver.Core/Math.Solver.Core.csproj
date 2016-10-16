@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,14 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Equations\QuadraticEquation\QuadraticEquationSolver.cs" />
+    <Compile Include="CoordinateSystem\ICoordinateSystem.cs" />
+    <Compile Include="CoordinateSystem\TwoDimensionalCoordinateSystem.cs" />
+    <Compile Include="Equations\Quadratic\QuadraticEquationSolver.cs" />
+    <Compile Include="Equations\Quadratic\QuadraticPolynomiumSolver.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Helpers\Formatting\FormatHelper.cs" />
     <Compile Include="Helpers\Formatting\IHelpFormatNumbers.cs" />
     <Compile Include="Helpers\Tex\TexHelper.cs" />
     <Compile Include="Infrastructure\IoC\Bootstrapper.cs" />
-    <Compile Include="Model\Equations\QuadraticEquation\QuadraticEquationParameters.cs" />
+    <Compile Include="Model\CoordinateSystem\AxisDefinition.cs" />
+    <Compile Include="Model\CoordinateSystem\CoordinateSystemType.cs" />
+    <Compile Include="Model\Equations\QuadraticEquation\QuadraticParameters.cs" />
     <Compile Include="Model\Equations\QuadraticEquation\QuadraticEquationResult.cs" />
+    <Compile Include="Model\Navigation\Point.cs" />
+    <Compile Include="Model\Navigation\Point3D.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -1,20 +1,36 @@
-﻿@using Math.Solver.Core.Equations.QuadraticEquation
+﻿@using System.Drawing
+@using Math.Solver.Core.CoordinateSystem
+@using Math.Solver.Core.Equations.Quadratic
+@using Math.Solver.Core.Equations.QuadraticEquation
 @using Math.Solver.Core.Model.Equations.QuadraticEquation
+@using model = Math.Solver.Core.Model
 @{
     ViewBag.Title = "Home Page";
     var solver = new QuadraticEquationSolver();
-    var param = new QuadraticEquationParameters()
+    var poly = new QuadraticPolynomiumSolver();
+    var param = new QuadraticParameters()
     {
         A = 2,
-        B = 20,
-        C = -22
+        B = 2,
+        C = -2
     };
+    var points = new List<model.Navigation.Point>();
     var res = solver.Solve(param);
+    var slv = new QuadraticPolynomiumSolver();
+    for (int i = -20; i <= 20; i++)
+    {
+        points.Add(new model.Navigation.Point(i, slv.Solve(param, i)));
+    }
+    var coord = new TwoDimensionalCoordinateSystem(1000);
+    coord.DrawBezier(points, String.Empty, Color.Red);
+    var path = coord.Save(Server.MapPath("~/Images/"));
 }
 
 <div class="jumbotron">
    @foreach (var proc in res.Process)
    {
-       <div>$@proc$</div>
+       <div>$$@proc$$</div>
+
    }
+    <img src="/Images/@path" alt="graph"/>
 </div>
