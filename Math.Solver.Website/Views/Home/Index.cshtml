@@ -24,12 +24,17 @@
     {
         points.Add(new model.Navigation.Point(i, slv.Solve(param, i)));
     }
-    var coord = new TwoDimensionalCoordinateSystem(600);
+    var coord = new TwoDimensionalCoordinateSystem(1000);
     coord.DrawBezier(points, String.Empty, Color.Red);
     coord.DrawPoint(new model.Navigation.Point(res.X[0], 0), "X₁", Color.Black);
     coord.DrawPoint(new model.Navigation.Point(res.X[1], 0), "X₂", Color.Black);
     coord.DrawPoint(res.T, "T", Color.Black);
-    var path = coord.Save(Server.MapPath("~/Images/"));
+    var images = Server.MapPath("~/Images/");
+    if (!Directory.Exists(images))
+    {
+        Directory.CreateDirectory(images);
+    }
+    var path = coord.Save(images);
 }
 
 <div class="jumbotron">
