@@ -18,7 +18,7 @@ namespace Math.Solver.Core.Model.Equations.QuadraticEquation
         public bool HasResult { get; set; }
         public List<decimal> X { get; set; }
         public List<string> Process { get; set; }
-        public Point T { get; set; }
+        public Math.Solver.Core.Model.Navigation.Point T { get; set; }
         public decimal D { get; set; }
         public List<string> TProcess { get; set; }
         public List<string> DProcess { get; set; }

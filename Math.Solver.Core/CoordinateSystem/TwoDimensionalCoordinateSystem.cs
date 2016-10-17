@@ -171,20 +171,20 @@ namespace Math.Solver.Core.CoordinateSystem
             }
         }
 
+        private int GetStepsInPixels(decimal steps)
+        {
+            return (int)(steps * GridCellSpacing + GridLineWidth);
+        }
+
         private int GetStepsInPixels(int steps)
         {
-            return steps * GridCellSpacing + GridLineWidth;
+            return GetStepsInPixels((decimal)steps);
         }
         public int Margin { get; set; }
 
         public Bitmap CoordinateSystem
         {
-            get
-            {
-                if (system == null)
-                    system = GenerateCoordinateSystem();
-                return system;
-            }
+            get { return system ?? (system = GenerateCoordinateSystem()); }
             set { system = value; }
         }
 
@@ -215,7 +215,7 @@ namespace Math.Solver.Core.CoordinateSystem
             ApplyMargin(bmp);
             using (var gfx = Graphics.FromImage(CoordinateSystem))
             {
-                gfx.DrawImage(bmp, new System.Drawing.Point(0,0));
+                gfx.DrawImage(bmp, new System.Drawing.Point(0, 0));
             }
         }
 
@@ -228,7 +228,7 @@ namespace Math.Solver.Core.CoordinateSystem
                 gfx.Clear(Color.Transparent);
                 gfx.SetClip(new Rectangle(GetStepsInPixels(AxisDefinition.Length + Margin), 0, Width - GetStepsInPixels(AxisDefinition.Length + Margin), Height), CombineMode.Replace);
                 gfx.Clear(Color.Transparent);
-                gfx.SetClip(new Rectangle(0, GetStepsInPixels(AxisDefinition.Length + Margin), Width, Height - GetStepsInPixels(AxisDefinition.Length + Margin )), CombineMode.Replace);
+                gfx.SetClip(new Rectangle(0, GetStepsInPixels(AxisDefinition.Length + Margin), Width, Height - GetStepsInPixels(AxisDefinition.Length + Margin)), CombineMode.Replace);
                 gfx.Clear(Color.Transparent);
                 gfx.SetClip(new Rectangle(0, 0, GetStepsInPixels(Margin), Height), CombineMode.Replace);
                 gfx.Clear(Color.Transparent);
@@ -241,22 +241,19 @@ namespace Math.Solver.Core.CoordinateSystem
             var origo = new Point(GetStepsInPixels(Margin + AxisDefinition.Length / 2), GetStepsInPixels(Margin + AxisDefinition.Length / 2));
             int x = 0, y = 0;
             if (point.X < 0)
-                x = origo.X - GetStepsInPixels(point.X * -1);
+                x = (int)origo.X - GetStepsInPixels(point.X * -1);
             if (point.X == 0)
-                x = origo.X;
+                x = (int)origo.X;
             if (point.X > 0)
-                x = origo.X + GetStepsInPixels(point.X);
+                x = (int)origo.X + GetStepsInPixels(point.X);
 
             if (point.Y < 0)
-                y = origo.Y + GetStepsInPixels(point.Y * -1);
+                y = (int)origo.Y + GetStepsInPixels(point.Y * -1);
             if (point.Y == 0)
-                y = origo.Y;
+                y = (int)origo.Y;
             if (point.Y > 0)
-                y = origo.Y - GetStepsInPixels(point.Y);
+                y = (int)origo.Y - GetStepsInPixels(point.Y);
 
-            //if (x < GetStepsInPixels(Margin) || y < GetStepsInPixels(Margin) ||
-            //    x > GetStepsInPixels(AxisDefinition.Length + Margin) || y > GetStepsInPixels(AxisDefinition.Length + Margin))
-            //    return System.Drawing.Point.Empty;
             return new System.Drawing.Point(x, y);
         }
         public int GridCellSpacing { get; set; }
@@ -268,7 +265,7 @@ namespace Math.Solver.Core.CoordinateSystem
         public string Save(string destFolder)
         {
             var file = $"{Id.ToString()}.png";
-            var path = Path.Combine(destFolder,file);
+            var path = Path.Combine(destFolder, file);
             CoordinateSystem.Save(path);
             return file;
         }
@@ -276,5 +273,27 @@ namespace Math.Solver.Core.CoordinateSystem
         public Guid Id { get; }
         public bool DrawGrid { get; set; }
         public AxisDefinition AxisDefinition { get; set; }
+        public void DrawPoint(Point point, string label, Color color)
+        {
+            using (var gfx = Graphics.FromImage(CoordinateSystem))
+            using (var brush = new SolidBrush(color))
+            {
+                var fontFamily = new FontFamily("Times New Roman");
+                var font = new Font(
+                   fontFamily,
+                   CalculateFontSize(),
+                   FontStyle.Regular,
+                   GraphicsUnit.Pixel);
+
+                gfx.TextRenderingHint = TextRenderingHint.AntiAliasGridFit;
+                gfx.SmoothingMode = SmoothingMode.AntiAlias;
+                var newPoint = TranslateToBitmapPosition(point);
+                newPoint.X -= 3;
+                newPoint.Y -= 3;
+                gfx.TextRenderingHint = TextRenderingHint.AntiAliasGridFit;
+                gfx.FillEllipse(brush, new Rectangle(newPoint, new Size(5, 5)));
+                gfx.DrawString(label, font, brush, newPoint);
+            }
+        }
     }
 }

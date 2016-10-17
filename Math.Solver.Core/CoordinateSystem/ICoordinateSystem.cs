@@ -20,6 +20,8 @@ namespace Math.Solver.Core.CoordinateSystem
         Guid Id { get; }
         bool DrawGrid { get; set; }
         AxisDefinition AxisDefinition { get; set; }
+        void DrawPoint(Model.Navigation.Point point, string label, Color color);
+        
 
     }
 }
