@@ -1,14 +1,14 @@
 /packages/*
 /.vs/*
 
-/Math.Solver.Website/bin/*
-/Math.Solver.Website/obj/*
-/Math.Solver.Website/Images/*
+Math.Solver.Website/bin
+Math.Solver.Website/obj/*
+Math.Solver.Website/Images/*
 
 
-/Math.Solver.Core/bin/*
-/Math.Solver.Core/obj/*
+Math.Solver.Core/bin/*
+Math.Solver.Core/obj/*
 
 
-/Math.Solver.Console/bin/*
-/Math.Solver.Console/obj/*
+Math.Solver.Console/bin/*
+Math.Solver.Console/obj/*

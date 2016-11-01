@@ -1,5 +1,0 @@
-C:\Users\Kenneth Jakobsen\Documents\Visual Studio 2015\Projects\Math.Solver\Math.Solver.Core\obj\Debug\Math.Solver.Core.csprojResolveAssemblyReference.cache
-C:\Users\Kenneth Jakobsen\Documents\Visual Studio 2015\Projects\Math.Solver\Math.Solver.Core\bin\Debug\Math.Solver.Core.dll
-C:\Users\Kenneth Jakobsen\Documents\Visual Studio 2015\Projects\Math.Solver\Math.Solver.Core\bin\Debug\Math.Solver.Core.pdb
-C:\Users\Kenneth Jakobsen\Documents\Visual Studio 2015\Projects\Math.Solver\Math.Solver.Core\obj\Debug\Math.Solver.Core.dll
-C:\Users\Kenneth Jakobsen\Documents\Visual Studio 2015\Projects\Math.Solver\Math.Solver.Core\obj\Debug\Math.Solver.Core.pdb

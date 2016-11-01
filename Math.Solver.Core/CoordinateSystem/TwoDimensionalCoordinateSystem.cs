@@ -74,42 +74,44 @@ namespace Math.Solver.Core.CoordinateSystem
             using (var pen = new Pen(AxisDefinition.Color, AxisDefinition.LineWidth))
             {
                 var number = AxisDefinition.Length / 2;
-                number *= -1;
+                if(axis == Axis.X)
+                    number *= -1;
+                var fontFamily = new FontFamily("Times New Roman");
+                var font = new Font(
+                   fontFamily,
+                   CalculateFontSize(),
+                   FontStyle.Regular,
+                   GraphicsUnit.Pixel);
+                gfx.TextRenderingHint = TextRenderingHint.AntiAliasGridFit;
 
                 for (int i = GetStepsInPixels(Margin); i <= GetStepsInPixels(AxisDefinition.Length) + GetStepsInPixels(Margin); i += GetStepsInPixels(AxisDefinition.NumericIndicatorEvery))
                 {
-                    if (number != 0)
-                    {
-                        var fontFamily = new FontFamily("Times New Roman");
-                        var font = new Font(
-                           fontFamily,
-                           CalculateFontSize(),
-                           FontStyle.Regular,
-                           GraphicsUnit.Pixel);
-                        gfx.TextRenderingHint = TextRenderingHint.AntiAliasGridFit;
-
                         if (axis == Axis.X)
                         {
-                            var y =
-                                Convert.ToInt32(System.Math.Round((double)GetStepsInPixels(AxisDefinition.Length / 2))) +
-                                GetStepsInPixels(Margin) * 1.5;
-                            gfx.DrawString(number.ToString(), font,
-                                new SolidBrush(AxisDefinition.Color), new PointF(i - GetStepsInPixels(1) / 2, (float)y));
+                            if (number != 0)
+                            {
+                                var y =
+                                    Convert.ToInt32(System.Math.Round((double) GetStepsInPixels(AxisDefinition.Length/2))) +
+                                    GetStepsInPixels(Margin)*1.5;
+                                gfx.DrawString(number.ToString(), font,
+                                    new SolidBrush(AxisDefinition.Color),
+                                    new PointF(i - GetStepsInPixels(1)/2, (float) y));
+                            }
+                            number += AxisDefinition.NumericIndicatorEvery;
                         }
                         if (axis == Axis.Y)
                         {
-
-                            var x =
-                                Convert.ToInt32(System.Math.Round((double)GetStepsInPixels(AxisDefinition.Length / 2))) +
-                                GetStepsInPixels(Margin) * 1.5;
-                            gfx.DrawString(number.ToString(), font, new SolidBrush(AxisDefinition.Color),
-                                new PointF((float)x, i - GetStepsInPixels(1) / 2));
+                            if (number != 0)
+                            {
+                                var x =
+                                    Convert.ToInt32(System.Math.Round((double) GetStepsInPixels(AxisDefinition.Length/2))) +
+                                    GetStepsInPixels(Margin)*1.5;
+                                gfx.DrawString(number.ToString(), font, new SolidBrush(AxisDefinition.Color),
+                                    new PointF((float) x, i - GetStepsInPixels(1)/2));
+                            }
+                            number -= AxisDefinition.NumericIndicatorEvery;
                         }
-                    }
-                    number += AxisDefinition.NumericIndicatorEvery;
                 }
-
-
             }
         }
         private void DrawIndicators(Axis axis)
